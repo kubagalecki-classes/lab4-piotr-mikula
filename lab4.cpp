@@ -9,12 +9,17 @@ public:
     T suma() { return obiekt1 + obiekt2; }
 };
 
+template < typename T, unsigned int N >
+class TablicaPar
+{
+public:
+    Para< T > tablica[N];
+};
+
 int main()
 {
-    Para< double > parka;
-    parka.obiekt1 = 3.14;
-    parka.obiekt2 = 2.11;
-    std::cout << "Suma rowna jest " << parka.suma() << std::endl;
+    TablicaPar< double, 4 > tab;
+    std::cout << "Rozmiar tablicy to " << sizeof(tab.tablica) << std::endl;
 
-    puts("Ostatnia linijka w kodzie!");
+    puts("\nOstatnia linijka w kodzie!");
 }
