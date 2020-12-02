@@ -27,6 +27,13 @@ public:
 };
 
 template < typename T >
+class TablicaPar< T, 0 >
+{
+public:
+    TablicaPar() { puts("Tablica jest pusta"); }
+};
+
+template < typename T >
 struct S
 {
     void print() { puts("Szablon ogólny"); }
@@ -40,10 +47,21 @@ struct S< double >
 
 int main()
 {
-    S< int >    S_int;
-    S< double > S_double;
+    Para< double >          p1{2, 3};
+    Para< double >          p2{3, 5};
+    Para< double >          p3{4, 10};
+    TablicaPar< double, 3 > tab;
+    TablicaPar< double, 0 > tab2;
+    std::cout << "Rozmiar tablicy to " << sizeof(tab.tablica) << std::endl;
 
-    S_int.print();
-    S_double.print();
+    tab[0] = p1;
+    tab[1] = p2;
+    tab[2] = p3;
+
+    tab.print();
+
+    double suma = p1.suma() + p2.suma() + p3.suma();
+    std::cout << "Suma wszystkich par wynosi " << suma << std::endl;
+
     puts("\nOstatnia linijka w kodzie!");
 }
