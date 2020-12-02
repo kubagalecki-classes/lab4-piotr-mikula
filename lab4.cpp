@@ -34,6 +34,15 @@ public:
 };
 
 template < typename T >
+T iloczyn(T tab[], int n)
+{
+    T wynik = static_cast< T >(1);
+    for (int i = 0; i < n; i++)
+        wynik = wynik * tab[i];
+    return wynik;
+}
+
+template < typename T >
 struct S
 {
     void print() { puts("Szablon ogólny"); }
@@ -62,6 +71,13 @@ int main()
 
     double suma = p1.suma() + p2.suma() + p3.suma();
     std::cout << "Suma wszystkich par wynosi " << suma << std::endl;
+
+    double tabelka[5] = {1, 4, 10, 5, 2.5};
+    double il         = iloczyn(tabelka, 5);
+    std::cout << "Iloczyn elementow tablicy ";
+    for (int i = 0; i < 5; i++)
+        std::cout << tabelka[i] << " ";
+    std::cout << "wynosi " << il << std::endl;
 
     puts("\nOstatnia linijka w kodzie!");
 }
