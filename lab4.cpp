@@ -26,22 +26,24 @@ public:
     }
 };
 
+template < typename T >
+struct S
+{
+    void print() { puts("Szablon ogólny"); }
+};
+
+template <>
+struct S< double >
+{
+    void print() { puts("Specjalizacja dla double"); }
+};
+
 int main()
 {
-    Para< double >          p1{2, 3};
-    Para< double >          p2{3, 5};
-    Para< double >          p3{4, 10};
-    TablicaPar< double, 3 > tab;
-    std::cout << "Rozmiar tablicy to " << sizeof(tab.tablica) << std::endl;
+    S< int >    S_int;
+    S< double > S_double;
 
-    tab[0] = p1;
-    tab[1] = p2;
-    tab[2] = p3;
-
-    tab.print();
-
-    double suma = p1.suma() + p2.suma() + p3.suma();
-    std::cout << "Suma wszystkich par wynosi " << suma << std::endl;
-
+    S_int.print();
+    S_double.print();
     puts("\nOstatnia linijka w kodzie!");
 }
