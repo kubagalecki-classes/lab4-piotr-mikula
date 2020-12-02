@@ -43,6 +43,12 @@ T iloczyn(T tab[], int n)
 }
 
 template < typename T >
+T sumaPary(Para< T >& para)
+{
+    return para.suma();
+}
+
+template < typename T >
 struct S
 {
     void print() { puts("Szablon ogólny"); }
@@ -56,28 +62,8 @@ struct S< double >
 
 int main()
 {
-    Para< double >          p1{2, 3};
-    Para< double >          p2{3, 5};
-    Para< double >          p3{4, 10};
-    TablicaPar< double, 3 > tab;
-    TablicaPar< double, 0 > tab2;
-    std::cout << "Rozmiar tablicy to " << sizeof(tab.tablica) << std::endl;
-
-    tab[0] = p1;
-    tab[1] = p2;
-    tab[2] = p3;
-
-    tab.print();
-
-    double suma = p1.suma() + p2.suma() + p3.suma();
-    std::cout << "Suma wszystkich par wynosi " << suma << std::endl;
-
-    double tabelka[5] = {1, 4, 10, 5, 2.5};
-    double il         = iloczyn(tabelka, 5);
-    std::cout << "Iloczyn elementow tablicy ";
-    for (int i = 0; i < 5; i++)
-        std::cout << tabelka[i] << " ";
-    std::cout << "wynosi " << il << std::endl;
+    Para< int > para{7, 9};
+    std::cout << sumaPary(para) << std::endl;
 
     puts("\nOstatnia linijka w kodzie!");
 }
